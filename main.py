@@ -1,5 +1,5 @@
 from typing import Tuple # Allows the usage of the Tuple type in our checker function
-from rng import rand_num as rng
+from random import randint, seed
 import PySimpleGUI as sg
 
 sg.theme('Dark Amber') # Sets the theme for the gui
@@ -19,7 +19,10 @@ layout = [[sg.Text("Guess a number from 1 to 1000:")],
 
 window = sg.Window(title="  Guessing Game", layout=layout) # Creates the window 
 
-answer = rng(1, 1000)
+#Randomizes more
+for _ in range(0,10):
+    seed(randint(0,10000))
+answer = randint(1,1000)
 
 while True:
     event, values = window.read()
