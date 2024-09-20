@@ -29,11 +29,14 @@ def main():
         if event == "Close" or event == sg.WIN_CLOSED or event == sg.WIN_CLOSE_ATTEMPTED_EVENT: # If the user tries to close the window
             break
         if event == "Submit": # if the user submits their answer
-            is_answer, output = checker(answer, int(values["--INPUT--"]))
-            if is_answer:
-                window["--OUTPUT--"].update("YOU WIN!")
-            else:
-                window["--OUTPUT--"].update(output)
+            try:
+                is_answer, output = checker(answer, int(values["--INPUT--"]))
+                if is_answer:
+                    window["--OUTPUT--"].update("YOU WIN!")
+                else:
+                    window["--OUTPUT--"].update(output)
+            except ValueError:
+                window["--OUTPUT--"].update("PUT IN A NUMBER IDIOT!!!")
 
     window.close() # closes the window
 
